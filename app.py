@@ -42,7 +42,7 @@ def handle_question():
     session[USER_RESPONSES] = responses
 
     if (len(responses) == len(sat_survey.questions)):
-        # They've answered all the questions! Thank them.
+        # All questions have been answered.
         return redirect("/end-survey")
 
     else:
@@ -59,11 +59,11 @@ def show_question(qid):
         return redirect("/")
 
     if (len(responses) == len(sat_survey.questions)):
-        # They've answered all the questions! Thank them.
+        # All questions have been answered.
         return redirect("/end-survey")
 
     if (len(responses) != qid):
-        # Trying to access questions out of order.
+        # Flash a message if the user is trying to access questions out of order.
         flash(f"Invalid question id: {qid}.")
         return redirect(f"/questions/{len(responses)}")
 
